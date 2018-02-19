@@ -1,4 +1,5 @@
 all:
   children:
-    webserver:
+    gocd-server:
+      # NOTE: There should ONLY be a SINGLE host in here!!
       hosts: 108.61.75.50
