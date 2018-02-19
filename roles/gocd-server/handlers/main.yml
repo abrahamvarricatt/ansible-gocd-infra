@@ -1,0 +1,6 @@
+---
+
+- name: restart gocd-server
+  service: name=go-server state=restarted
+  become: true
+
