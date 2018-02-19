@@ -1,0 +1,4 @@
+all:
+  children:
+    webserver:
+      hosts: 108.61.75.50
