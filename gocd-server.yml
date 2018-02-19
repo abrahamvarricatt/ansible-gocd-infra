@@ -1,0 +1,11 @@
+---
+  - hosts: gocd-server
+  
+    vars_files:
+      - group_vars/vault/secrets.yml
+      - group_vars/secrets.yml
+      - group_vars/all.yml
+
+    roles:
+      - common
+  

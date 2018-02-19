@@ -1,0 +1,3 @@
+---
+- import_playbook: gocd-server.yml
+- import_playbook: gocd-agents.yml
