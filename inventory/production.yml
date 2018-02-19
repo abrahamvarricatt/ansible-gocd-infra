@@ -2,4 +2,4 @@ all:
   children:
     gocd-server:
       # NOTE: There should ONLY be a SINGLE host in here!!
-      hosts: 108.61.75.50
+      hosts: 144.202.51.184
