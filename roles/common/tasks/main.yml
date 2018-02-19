@@ -1,4 +1,33 @@
 ---
 
-  - name: ping
-    ping:
+  - name: Add open JDK repository
+    apt_repository:
+      repo: 'ppa:openjdk-r/ppa'
+    become: true
+
+  - name: Add gocd repository
+    apt_repository:
+      repo: deb https://download.gocd.org /
+      state: present
+      filename: 'gocd'
+    become: true
+
+  - name: Add gocd apt signing key
+    apt_key:
+      url: https://download.gocd.org/GOCD-GPG-KEY.asc
+      state: present
+    become: true
+
+  - name: Update apt packages
+    apt:
+      update_cache: yes
+    become: true
+
+  - name: Install Open JDK 8
+    apt:
+      name: "{{ item }}"
+      state: present
+    with_items:
+      - 'openjdk-8-jre'
+    become: true
+
