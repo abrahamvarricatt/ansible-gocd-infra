@@ -1,1 +1,2 @@
 group_vars/vault/secrets.yml
+ssh/ansible.pem
