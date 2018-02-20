@@ -1,0 +1,6 @@
+---
+
+- name: restart gocd-agent
+  service: name=go-agent state=restarted
+  become: true
+

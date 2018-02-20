@@ -1,0 +1,19 @@
+---
+
+  - name: Install gocd agent
+    apt:
+      name: "{{ item }}"
+      state: present
+    with_items:
+      - 'go-agent'
+    notify: restart gocd-agent
+    become: true
+
+  - name: Configure gocd server
+    lineinfile:
+      path: /etc/default/go-agent
+      regexp: '^GO_SERVER_URL='
+      line: "GO_SERVER_URL=https://{{ gocd_server_ip }}:8154/go"
+    notify: restart gocd-agent
+    become: true
+

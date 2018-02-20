@@ -2,4 +2,6 @@ all:
   children:
     gocd-server:
       # NOTE: There should ONLY be a SINGLE host in here!!
-      hosts: 144.202.51.184
+      hosts: 144.202.51.184  # This should be same as gocd_server_ip variable
+    gocd-agents:
+      hosts: 207.148.27.74
