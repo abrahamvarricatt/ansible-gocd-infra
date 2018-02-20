@@ -1,20 +1,6 @@
 ---
 
-  - name: Install gocd server
-    apt:
-      name: "{{ item }}"
-      state: present
-    with_items:
-      - 'go-server'
-    become: true
-    notify: restart gocd-server
-
-  - name: update CloudFlare DNS records
-    cloudflare_dns:
-      zone: "{{ cloudflare_zone }}"
-      record: "{{ cloudflare_subdomain }}"
-      type: A
-      value: "{{ ansible_default_ipv4.address }}"
-      account_email: "{{ cloudflare_username }}"
-      account_api_token: "{{ cloudflare_password_token }}"
+  - import_tasks: install-gocd-server.yml
+  - import_tasks: update-dns-record.yml
+  - import_tasks: apache2-reverse-proxy.yml
 

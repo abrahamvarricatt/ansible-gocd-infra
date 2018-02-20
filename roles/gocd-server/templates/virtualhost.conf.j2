@@ -1,0 +1,14 @@
+<VirtualHost *:80>
+  ServerName {{ cloudflare_subdomain }}.{{ cloudflare_zone }}
+  DocumentRoot /var/www/html
+
+
+  ProxyPass         /  http://localhost:8153/
+  ProxyPassReverse  /  http://localhost:8153/
+
+  ErrorLog ${APACHE_LOG_DIR}/error.log
+  CustomLog ${APACHE_LOG_DIR}/access.log combined
+
+
+  ProxyPreserveHost On
+</VirtualHost>

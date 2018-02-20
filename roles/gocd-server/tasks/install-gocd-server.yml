@@ -1,0 +1,10 @@
+---
+
+  - name: Install gocd server
+    apt:
+      name: "{{ item }}"
+      state: present
+    with_items:
+      - 'go-server'
+    become: true
+    notify: restart gocd-server

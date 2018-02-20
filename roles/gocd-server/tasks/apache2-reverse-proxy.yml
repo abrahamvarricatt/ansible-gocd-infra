@@ -1,0 +1,35 @@
+---
+
+  - name: Install apache2
+    apt:
+      name: "{{ item }}"
+      state: present
+    with_items:
+      - 'apache2'
+      - 'apache2-bin'
+    become: true
+
+  - name: Enable mod_proxy
+    apache2_module:
+      name: proxy_html
+      state: present
+    notify:
+      - restart apache2
+    become: true
+
+  - name: Enable proxy mod
+    apache2_module:
+      name: proxy
+      state: present
+    notify:
+      - restart apache2
+    become: true
+
+  - name: Update default virtual host file
+    template: 
+      src: virtualhost.conf.j2 
+      dest: "/etc/apache2/sites-available/000-default.conf"
+    notify:
+      - restart apache2
+    become: true
+
