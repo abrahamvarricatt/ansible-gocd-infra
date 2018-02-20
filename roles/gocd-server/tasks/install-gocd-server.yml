@@ -8,3 +8,23 @@
       - 'go-server'
     become: true
     notify: restart gocd-server
+
+  - name: Permission for artifacts mount point
+    file:
+      path: /mnt/artifact-storage
+      state: directory
+      owner: go
+      group: go
+      mode: 0755
+    become: true
+  
+  - name: Copy user authentication file
+    copy:
+      src: authentication
+      dest: /etc/go/authentication
+      owner: go
+      group: go
+      mode: 0666
+    become: true
+
+    
